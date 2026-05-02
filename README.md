@@ -1,6 +1,7 @@
 # STQD6324 DATA MANAGEMENT ASSIGNMENT 1 (P166974)
 
 ## Overview of the Project
+
 This project demonstrates a complete machine learning pipeline using PySpark to classify iris flower species based on their physical measurements. It implements a full end-to-end workflow using PySpark MLlib, focusing on classification of iris species based on their morphological features.
 
 The workflow follows a structured data science approach, which includes data preprocessing, feature engineering, model development, optimization, and performance analysis. It also involves evaluating multiple classification algorithms to compare their effectiveness.
