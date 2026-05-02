@@ -1,10 +1,12 @@
 # STQD6324 DATA MANAGEMENT ASSIGNMENT 1 (P166974)
+
 ## Overview of the Project
 This project demonstrates a complete machine learning pipeline using PySpark to classify iris flower species based on their physical measurements. It implements a full end-to-end workflow using PySpark MLlib, focusing on classification of iris species based on their morphological features.
 
 The workflow follows a structured data science approach, which includes data preprocessing, feature engineering, model development, optimization, and performance analysis. It also involves evaluating multiple classification algorithms to compare their effectiveness.
 
 The main objective of this project is to build a scalable machine learning solution using Apache Spark and identify the best-performing model for the Iris dataset classification task. Through systematic evaluation and hyperparameter tuning, the project aims to determine the most effective model for accurate species prediction.
+
 ## Dataset Description
 The project uses the classic Iris dataset, which is a well-known benchmark dataset widely applied in classification tasks. It contains measurements of iris flowers from three different species: **Setosa**, **Versicolor**, and **Virginica**.
 
@@ -15,7 +17,6 @@ The target variable in this dataset is the species, which serves as the classifi
 The main objective of this project is to build a machine learning model that can accurately predict the species of an iris flower based on the four input features. Due to its simplicity, well-structured format, and balanced class distribution, this dataset is widely used in machine learning as a standard benchmark for evaluating classification algorithms.
 
 ## Methodology
-
 The first step in the methodology is **data preprocessing**, where the dataset is prepared for use with Spark MLlib. This includes converting categorical labels into a numeric format using StringIndexer, as well as combining all feature columns into a single feature vector using VectorAssembler. This ensures that the data is properly structured and compatible with Spark’s machine learning pipeline.
 
 Next, the dataset is **split into training and testing sets**, with 80% of the data used for training and 20% reserved for testing. A random seed is applied to ensure that the results are reproducible. This split allows for unbiased evaluation of the model on unseen data.
@@ -33,7 +34,6 @@ In addition to accuracy, the **F1-score** was also used as an important evaluati
 Overall, while accuracy provides a general measure of correctness, the F1-score offers a more reliable and balanced evaluation for classification tasks. This makes it a more informative metric when comparing the performance of different machine learning models. For this study, both accuracy and F1-score are used to evaluate and compare model performance.
 
 ## Results & Summary of Findings
-
 | Model                | Accuracy | F1-score |
 |---------------------|----------|----------|
 | Decision Tree       | **1.0000** | **1.0000** |
@@ -67,10 +67,9 @@ The slightly lower performance of Random Forest in this experiment can be attrib
 In contrast, the perfect performance of Decision Tree and Logistic Regression may be influenced by the highly separable nature of the dataset and a favourable train-test split, which may not reflect real-world scenarios. Therefore, Random Forest is considered the most robust and reliable model overall, particularly for handling more complex and unseen data.
 
 ## Instructions to Reproduce the Analysis
-
 ### 1. Clone the Repository
-git clone https://github.com/your-username/iris-pyspark-classification.git  
-cd iris-pyspark-classification  
+git clone https://github.com/AMujahid843/STQD6324_Data_Management_Assignment_1_P166974.git  
+cd STQD6324_Data_Management_Assignment_1_P166974  
 
 ### 2. Create and Activate Environment
 conda create -n pyspark-env python=3.10  
