@@ -32,89 +32,65 @@ In addition to accuracy, the **F1-score** was also used as an important evaluati
 
 Overall, while accuracy provides a general measure of correctness, the F1-score offers a more reliable and balanced evaluation for classification tasks. This makes it a more informative metric when comparing the performance of different machine learning models. For this study, both accuracy and F1-score are used to evaluate and compare model performance.
 
+## Results & Summary of Findings
 
-📈 Results
-Model	Accuracy	F1 Score
-Decision Tree	0.93	0.92
-Random Forest	0.97	0.96
-Logistic Regression	0.95	0.94
-________________________________________
-🔍 Discussion
-🔸 Performance Analysis
-•	Random Forest achieved the highest performance across all metrics
-•	Logistic Regression performed competitively but was limited by its linear assumptions
-•	Decision Tree showed lower performance due to overfitting tendencies
-________________________________________
-🔸 Model Strengths & Limitations
-🌳 Decision Tree
-Strengths:
-•	Interpretable and easy to visualise
-•	Fast training time
-Limitations:
-•	Prone to overfitting
-•	Sensitive to small data variations
-________________________________________
-🌲 Random Forest
-Strengths:
-•	High predictive accuracy
-•	Reduces overfitting through ensemble learning
-•	Captures complex, non-linear relationships
-Limitations:
-•	Less interpretable
-•	Higher computational cost
-________________________________________
-📈 Logistic Regression
-Strengths:
-•	Simple and efficient
-•	Works well with linearly separable data
-Limitations:
-•	Assumes linear relationships
-•	Less effective for complex patterns
-________________________________________
-🏆 Best Model Justification
-The Random Forest model is selected as the best-performing model due to its superior accuracy and F1-score.
-Its ensemble approach reduces variance and enhances generalisation, making it more robust compared to individual models. Additionally, it effectively captures non-linear relationships present in the dataset.
-________________________________________
-▶️ Reproducibility Guide
-🔹 1. Clone Repository
-git clone <your-repo-link>
-cd iris-spark-classification
-🔹 2. Create Environment (Anaconda Recommended)
-conda create -n pyspark_env python=3.10
-conda activate pyspark_env
-🔹 3. Install Dependencies
-conda install -c conda-forge pyspark
-conda install notebook
-pip install findspark
-🔹 4. Launch Notebook
-jupyter notebook
-🔹 5. Run Analysis
-Open:
-notebook/iris_classification.ipynb
-Then run all cells.
-________________________________________
-📂 Project Structure
-iris-spark-classification/
-│
-├── notebook/
-│   └── iris_classification.ipynb
-├── data/
-│   └── iris.csv
-├── README.md
-└── requirements.txt
-________________________________________
-📌 Key Takeaways
-•	Proper preprocessing is essential for Spark ML pipelines
-•	Hyperparameter tuning significantly improves performance
-•	Ensemble models (Random Forest) outperform single models
-•	Evaluation metrics beyond accuracy provide deeper insights
-________________________________________
-📚 References
-•	Apache Spark MLlib Documentation
-•	UCI Machine Learning Repository – Iris Dataset
-________________________________________
-👨‍💻 Author
-Student Name: [Your Name]
-Course: [Your Course Name]
-Institution: [Your University]
-________________________________________
+| Model                | Accuracy | F1-score |
+|---------------------|----------|----------|
+| Decision Tree       | **1.0000** | **1.0000** |
+| Logistic Regression | **1.0000** | **1.0000** |
+| Random Forest       | 0.9583   | 0.9578   |
+
+The results indicate that both the Decision Tree and Logistic Regression models achieved perfect performance, with an accuracy and F1-score of 1.000. In contrast, the Random Forest model achieved slightly lower performance, with an accuracy of 0.9583 and an F1-score of 0.9578.
+
+This outcome can be attributed to several factors related to the characteristics of the Iris dataset. Firstly, the dataset is relatively simple and well-structured, with clear separation between classes—particularly for the Setosa species, which is linearly separable from the others. As a result, even relatively simple models such as Decision Trees and Logistic Regression are capable of perfectly classifying the data.
+
+Secondly, the dataset is small, consisting of only 150 observations. With an 80/20 train-test split, the test set contains a limited number of samples. This increases the likelihood of a favourable split, where the selected test instances are easier to classify, allowing some models to achieve perfect scores.
+
+The slightly lower performance of the Random Forest model can be explained by its ensemble nature. Random Forest introduces randomness through bootstrap sampling and feature selection, which helps improve generalisation but can reduce performance slightly on small datasets. Unlike single models, it does not attempt to perfectly fit the training data, making its predictions more conservative and often more realistic.
+
+In addition, feature importance analysis revealed that petal length and petal width are the most significant predictors in determining the iris species. These features contributed most strongly to the model’s decision-making process and played a key role in achieving high classification accuracy.
+
+Therefore, although Decision Tree and Logistic Regression achieved perfect evaluation metrics in this experiment, this does not necessarily indicate superior generalisation ability. The Random Forest model may still be considered more robust in practice due to its ability to handle variability and reduce overfitting.
+
+## Model Strengths & Limitations
+The Decision Tree model is highly interpretable and easy to visualise, making it useful for understanding decision-making processes. It also has fast training time. However, it is prone to overfitting and can be sensitive to small variations in the dataset, which reduces its generalisation ability.
+
+The Random Forest model offers high predictive accuracy and reduces overfitting through ensemble learning. It is also capable of capturing complex, non-linear relationships in the data. However, its main limitations are lower interpretability and higher computational cost compared to simpler models.
+
+Logistic Regression is simple and efficient, and it performs well when data is linearly separable. Despite this, it assumes linear relationships between features and the target variable, making it less effective for capturing complex patterns in the dataset.
+
+## Best Model Justification
+Although the Decision Tree and Logistic Regression models achieved perfect accuracy and F1-score in this study, the Random Forest model is selected as the most reliable model for practical applications. This is because its ensemble learning approach reduces variance and improves generalisation, making it less prone to overfitting compared to individual models.
+
+The slightly lower performance of Random Forest in this experiment can be attributed to the small size and simplicity of the Iris dataset, as well as the limited test set. Despite not achieving perfect scores, Random Forest provides more stable and realistic predictions due to its use of multiple decision trees and random sampling.
+
+In contrast, the perfect performance of Decision Tree and Logistic Regression may be influenced by the highly separable nature of the dataset and a favourable train-test split, which may not reflect real-world scenarios. Therefore, Random Forest is considered the most robust and reliable model overall, particularly for handling more complex and unseen data.
+
+## Instructions to Reproduce the Analysis
+
+### 1. Clone the Repository
+git clone https://github.com/your-username/iris-pyspark-classification.git  
+cd iris-pyspark-classification  
+
+### 2. Create and Activate Environment
+conda create -n pyspark-env python=3.10  
+conda activate pyspark-env  
+
+### 3. Install Required Packages
+conda install -c conda-forge pyspark  
+pip install pandas matplotlib seaborn jupyter  
+
+### 4. Run the Notebook
+jupyter notebook  
+
+Open the `.ipynb` file and run all cells sequentially.
+
+### 5. Dataset
+The Iris dataset is automatically downloaded within the notebook using a public URL. No manual download is required.
+
+### 6. Expected Output
+After execution, the notebook will produce:
+- Model evaluation results (Accuracy and F1-score)
+- Comparison of multiple classification models
+- Identification of the best-performing model
+
