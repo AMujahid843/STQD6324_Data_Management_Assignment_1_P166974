@@ -39,19 +39,20 @@ Overall, while accuracy provides a general measure of correctness, the F1-score 
 |---------------------|----------|----------|
 | Decision Tree       | **1.0000** | **1.0000** |
 | Logistic Regression | **1.0000** | **1.0000** |
-| Random Forest       | 0.9583   | 0.9578   |
+| Random Forest       | **1.0000** | **1.0000** |
 
-The results indicate that both the Decision Tree and Logistic Regression models achieved perfect performance, with an accuracy and F1-score of 1.000. In contrast, the Random Forest model achieved slightly lower performance, with an accuracy of 0.9583 and an F1-score of 0.9578.
+The results indicate that all three models achieved perfect performance, with an accuracy and F1-score of 1.000. This outcome can be attributed to several factors related to the characteristics of the Iris dataset. Firstly, the dataset is relatively simple and well-structured, with clear separation between classes, particularly for the Setosa species, which is linearly separable from the others. As a result, even relatively simple models such as Decision Trees and Logistic Regression are capable of perfectly classifying the data.
 
-This outcome can be attributed to several factors related to the characteristics of the Iris dataset. Firstly, the dataset is relatively simple and well-structured, with clear separation between classes particularly for the Setosa species, which is linearly separable from the others. As a result, even relatively simple models such as Decision Trees and Logistic Regression are capable of perfectly classifying the data.
+Secondly, the dataset is small, consisting of only 150 observations. With an 80/20 train-test split, the test set contains a limited number of samples, making the evaluation metrics highly sensitive to the specific data partition. In some cases, the test set may consist of easily classifiable instances, allowing models to achieve perfect accuracy.
 
-Secondly, the dataset is small, consisting of only 150 observations. With an 80/20 train-test split, the test set contains a limited number of samples. This increases the likelihood of a favourable split, where the selected test instances are easier to classify, allowing some models to achieve perfect scores.
+In addition, the variation in model performance across different runs is influenced by the randomness inherent in the train-test splitting and model training processes. Although a random seed was specified, Spark’s distributed processing can still result in slight differences in data partitioning. This explains why model performance may fluctuate across executions, with some runs producing perfect scores for all models.
 
-The slightly lower performance of the Random Forest model can be explained by its ensemble nature. Random Forest introduces randomness through bootstrap sampling and feature selection, which helps improve generalisation but can reduce performance slightly on small datasets. Unlike single models, it does not attempt to perfectly fit the training data, making its predictions more conservative and often more realistic.
+In some runs, random forest may not get the perfect accuracy and F1-score. The slightly lower performance of the Random Forest model can be explained by its ensemble nature. Random Forest introduces randomness through bootstrap sampling and feature selection, which enhances generalisation but may slightly reduce performance on small and simple datasets. Unlike individual models, it does not attempt to perfectly fit the training data, resulting in more conservative and realistic predictions.
 
-In addition, feature importance analysis revealed that petal length and petal width are the most significant predictors in determining the iris species. These features contributed most strongly to the model’s decision-making process and played a key role in achieving high classification accuracy.
+Furthermore, feature importance analysis revealed that petal length and petal width are the most significant predictors in determining the iris species. These features contributed most strongly to the model’s decision-making process and played a key role in achieving high classification accuracy.
 
-Therefore, although Decision Tree and Logistic Regression achieved perfect evaluation metrics in this experiment, this does not necessarily indicate superior generalisation ability. The Random Forest model may still be considered more robust in practice due to its ability to handle variability and reduce overfitting.
+Therefore, although Decision Tree and Logistic Regression achieved perfect evaluation metrics in this experiment, this does not necessarily indicate superior generalisation ability. Fluctuations in performance highlight the importance of using robust evaluation techniques such as cross-validation. Overall, the Random Forest model may still be considered more reliable in practice due to its ability to handle variability and reduce overfitting, making it more suitable for real-world applications.
+
 
 ## Model Strengths & Limitations
 The Decision Tree model is highly interpretable and easy to visualise, making it useful for understanding decision-making processes. It also has fast training time. However, it is prone to overfitting and can be sensitive to small variations in the dataset, which reduces its generalisation ability.
@@ -61,9 +62,9 @@ The Random Forest model offers high predictive accuracy and reduces overfitting 
 Logistic Regression is simple and efficient, and it performs well when data is linearly separable. Despite this, it assumes linear relationships between features and the target variable, making it less effective for capturing complex patterns in the dataset.
 
 ## Best Model Justification
-Although the Decision Tree and Logistic Regression models achieved perfect accuracy and F1-score in this study, the Random Forest model is selected as the most reliable model for practical applications. This is because its ensemble learning approach reduces variance and improves generalisation, making it less prone to overfitting compared to individual models.
+Although all three models achieved perfect accuracy and F1-score in this study, the Random Forest model is selected as the most reliable model for practical applications. This is because its ensemble learning approach reduces variance and improves generalisation, making it less prone to overfitting compared to individual models.
 
-The slightly lower performance of Random Forest in this experiment can be attributed to the small size and simplicity of the Iris dataset, as well as the limited test set. Despite not achieving perfect scores, Random Forest provides more stable and realistic predictions due to its use of multiple decision trees and random sampling.
+The slightly lower performance of Random Forest for some runs in this experiment can be attributed to the small size and simplicity of the Iris dataset, as well as the limited test set. Despite not achieving perfect scores, Random Forest provides more stable and realistic predictions due to its use of multiple decision trees and random sampling.
 
 In contrast, the perfect performance of Decision Tree and Logistic Regression may be influenced by the highly separable nature of the dataset and a favourable train-test split, which may not reflect real-world scenarios. Therefore, Random Forest is considered the most robust and reliable model overall, particularly for handling more complex and unseen data.
 
