@@ -20,7 +20,7 @@ The main objective of this project is to build a machine learning model that can
 ## Methodology
 The first step in the methodology is **data preprocessing**, where the dataset is prepared for use with Spark MLlib. This includes converting categorical labels into a numeric format using StringIndexer, as well as combining all feature columns into a single feature vector using VectorAssembler. This ensures that the data is properly structured and compatible with Spark’s machine learning pipeline.
 
-Next, the dataset is **split into training and testing sets**, with 80% of the data used for training and 20% reserved for testing. A random seed is applied to ensure that the results are reproducible. This split allows for unbiased evaluation of the model on unseen data.
+Next, the dataset is **split into training and testing sets**, with 80% of the data used for training and 20% reserved for testing. A random seed is applied to ensure that the results are reproducible. This split allows for unbiased evaluation of the model on unseen data. Although a random seed is applied, PySpark operates in a distributed environment, which may still introduce slight variations in data partitioning. Additionally, due to the small size of the dataset, the evaluation results can be sensitive to the specific train-test split. To address this, cross-validation is used to provide more stable and reliable performance estimates.
 
 In the **model development stage**, three different classification algorithms are implemented: **Decision Tree**, **Random Forest**, and **Logistic Regression**. The Decision Tree model splits data based on feature thresholds, while Random Forest improves performance by combining multiple decision trees to enhance generalisation. Logistic Regression is used as a linear model adapted for multiclass classification. These models represent different learning approaches, allowing for a meaningful performance comparison.
 
@@ -43,7 +43,7 @@ Overall, while accuracy provides a general measure of correctness, the F1-score 
 
 The results indicate that both the Decision Tree and Logistic Regression models achieved perfect performance, with an accuracy and F1-score of 1.000. In contrast, the Random Forest model achieved slightly lower performance, with an accuracy of 0.9583 and an F1-score of 0.9578.
 
-This outcome can be attributed to several factors related to the characteristics of the Iris dataset. Firstly, the dataset is relatively simple and well-structured, with clear separation between classes—particularly for the Setosa species, which is linearly separable from the others. As a result, even relatively simple models such as Decision Trees and Logistic Regression are capable of perfectly classifying the data.
+This outcome can be attributed to several factors related to the characteristics of the Iris dataset. Firstly, the dataset is relatively simple and well-structured, with clear separation between classes particularly for the Setosa species, which is linearly separable from the others. As a result, even relatively simple models such as Decision Trees and Logistic Regression are capable of perfectly classifying the data.
 
 Secondly, the dataset is small, consisting of only 150 observations. With an 80/20 train-test split, the test set contains a limited number of samples. This increases the likelihood of a favourable split, where the selected test instances are easier to classify, allowing some models to achieve perfect scores.
 
