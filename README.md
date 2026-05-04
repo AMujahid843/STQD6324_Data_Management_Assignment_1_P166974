@@ -62,7 +62,7 @@ The Random Forest model offers high predictive accuracy and reduces overfitting 
 Logistic Regression is simple and efficient, and it performs well when data is linearly separable. Despite this, it assumes linear relationships between features and the target variable, making it less effective for capturing complex patterns in the dataset.
 
 ## Best Model Justification
-Although all three models achieved perfect accuracy and F1-score in this study, the Random Forest model is selected as the most reliable model for practical applications. This is because its ensemble learning approach reduces variance and improves generalisation, making it less prone to overfitting compared to individual models.
+Although all three models achieved perfect accuracy and F1-score in this study, the **Random Forest** model is selected as the most reliable model for practical applications. This is because its ensemble learning approach reduces variance and improves generalisation, making it less prone to overfitting compared to individual models.
 
 The slightly lower performance of Random Forest for some runs in this experiment can be attributed to the small size and simplicity of the Iris dataset, as well as the limited test set. Despite not achieving perfect scores, Random Forest provides more stable and realistic predictions due to its use of multiple decision trees and random sampling.
 
